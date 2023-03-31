@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 
 public class CriadorDeFigurinhas {
     
-    public void cria (InputStream inputStream, String nomeArquivo, int ranking) throws Exception {
+    public void cria (InputStream inputStream, String nomeArquivo) throws Exception {
 
         // como será feita a leitura da Imagem
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
@@ -38,17 +38,17 @@ public class CriadorDeFigurinhas {
         
 
         // escrever uma frase na nova imagem na parte transparente
-        String textoSticker = "";                  // string para armazenar o possivel nome que será aplicado a figurinha
-        if (ranking <= 3) {                         // nas seguintes linhas será as condições para os possíveis
-            textoSticker = "TOPZERA";
-        } else if (ranking <= 7) {
-            textoSticker = "TOPINHO";
-        } else {
-            textoSticker = "NEH";
-        }
+        String textoSticker = "TOPZERA";                  // string para armazenar o possivel nome que será aplicado a figurinha
+        // if (ranking <= 3) {                     // nas seguintes linhas será as condições para os possíveis
+        //     textoSticker = "TOPZERA";
+        // } else if (ranking <= 7) {
+        //     textoSticker = "TOPINHO";
+        // } else {
+        //     textoSticker = "NEH";
+        // }
         FontMetrics fontMetrics = graphics.getFontMetrics();                    // metodo para descobrir o tamanho do texto da imagem
         Rectangle2D retangulo = fontMetrics.getStringBounds(textoSticker, graphics);   // foi criado um retangulo para calcular a altura e a largura desse retangulo que é o texto
-        int larguraTexto = (int) retangulo.getWidth();                          // aqui é para pegar o tamanho
+        int larguraTexto = (int) retangulo.getWidth();                          // aqui é para pegar o tamanho do texto
         int posicaoTextoX = (int) (largura - larguraTexto)/2;                   // esse é o calculo para definir o valor da posição x para deixar o texto centralizado
         int posicaoTextoY = (int) ((int) novaAltura - (novaAltura * 0.05));     // aqui se calcula onde o texto irá se localizar no eixo y
         graphics.drawString(textoSticker, posicaoTextoX , posicaoTextoY);       // variáveis que irão demarcar a posição do texto no sticker
